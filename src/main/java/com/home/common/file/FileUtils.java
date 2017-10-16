@@ -69,7 +69,7 @@ public class FileUtils {
         int dotPosition = fileName.lastIndexOf('.');
 
         if (-1 != dotPosition && fileName.length() - 1 > dotPosition) {
-            return fileName.substring(dotPosition + 1);
+            return fileName.substring(dotPosition + 1).toLowerCase();
         } else {
             return "";
         }
