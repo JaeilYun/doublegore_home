@@ -99,7 +99,7 @@ public class FileController {
 		ModelAndView mav = new ModelAndView("download");
 		FileEntity fileEntity = fileService.selectFile(nodeId, fileName, "F");
 
-		mav.addObject("filePath", fileEntity.getFilePath());
+		mav.addObject("filePath", fileEntity.getFileFullPath());
 		mav.addObject("fileName", fileEntity.getFileName());
 
 		return mav;

@@ -13,7 +13,7 @@
 					<h3 style="margin-top: -2px;">
 						<span class="nodeName" style="display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Home</span>
 					</h3>
-					<div class="top-content pull-right">
+					<div class="top-content pull-left">
 						<ul class="list-inline mini-stat">
 							<li class="pull-left" style="margin-bottom: 5px;">
 								<h5>Counts <span class="stat-value stat-color-orange nodeFileCount" style="text-align: right;"> 0</span></h5>

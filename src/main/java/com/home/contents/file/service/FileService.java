@@ -66,12 +66,14 @@ public class FileService {
         genId = genId.replace("-", "");
         String fileType = FileUtils.getExtension(file.getOriginalFilename());
 
-        String saveFilePath = FileUtils.fileSave(environment.getRequiredProperty("file.path"), file, genId, nodeId);
+        String uploadPath = environment.getRequiredProperty("app.home") + environment.getRequiredProperty("file.path");
+        String saveFilePath = FileUtils.fileSave(uploadPath, file, genId, nodeId);
 
         Date date = new Date();
         FileEntity fileEntity = new FileEntity();
         fileEntity.setFileName(file.getOriginalFilename());
         fileEntity.setFilePath(environment.getRequiredProperty("file.path")+saveFilePath);
+        fileEntity.setFileFullPath(uploadPath+saveFilePath);
         fileEntity.setFileSize(file.getSize());
         fileEntity.setFileType(fileType);
         fileEntity.setNodeId(nodeId);

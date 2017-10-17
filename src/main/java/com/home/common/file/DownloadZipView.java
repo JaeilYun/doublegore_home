@@ -31,7 +31,7 @@ public class DownloadZipView {
             // Compress the files
             for (int i=0; i<fileList.size(); i++) {
 
-                FileInputStream fs = new FileInputStream(fileList.get(i).getFilePath());
+                FileInputStream fs = new FileInputStream(fileList.get(i).getFileFullPath());
                 BufferedInputStream in = new BufferedInputStream(fs, size);
 
                 // Add ZIP entry to output stream.
