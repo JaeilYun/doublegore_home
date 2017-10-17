@@ -27,6 +27,7 @@
 <script src="${contextRoot}/assets/js/plugins/tree/jstree.contextmenu.js"></script>
 <script src="${contextRoot}/assets/js/plugins/bootstrap-contextmenu/bootstrap-contextmenu.js"></script>
 <script src="${contextRoot}/assets/js/king-elements.js"></script>
+<script src="${contextRoot}/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
 <%--Page--%>
 <script src="${contextRoot}/assets/js/jquery-ui/jquery-ui-1.10.4.custom.min.js"></script>

@@ -8,30 +8,39 @@
 	<div class="main-content">
 		<!-- FILE MANAGER -->
 		<div class="file-manager">
-			<ul class="list-inline file-main-menu">
-				<li><a href="#" class="inactive file-top-menu-upload"><i class="fa fa-upload"></i> Upload</a></li>
-				<li><a href="#" class="inactive file-top-menu menu-download"><i class="fa fa-download"></i> Download</a></li>
-				<li><a href="#" class="inactive file-top-menu menu-delete"><i class="fa fa-close"></i> Delete</a></li>
-				<li><a href="#" class="inactive file-top-menu"><i class="fa fa-eye"></i> View</a></li>
-				<li><a href="#" class="inactive file-top-menu-select select"><i class="fa fa-square-o selectIcon"></i> Select</a></li>
-			</ul>
+			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-lg-2" style="padding-left: 25px;">
+					<h3 style="margin-top: -2px;">
+						<span class="nodeName" style="display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Home</span>
+					</h3>
+					<div class="top-content pull-left">
+						<ul class="list-inline mini-stat">
+							<li class="pull-left" style="margin-bottom: 5px;">
+								<h5>Counts <span class="stat-value stat-color-orange nodeFileCount" style="text-align: right;"> 0</span></h5>
+							</li>
+							<li class="pull-left">
+								<h5 style="text-align: right;">Size <span class="stat-value stat-color-blue nodeFileSize"> 0</span></h5>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-10" style="margin-top: 15px;">
+					<ul class="list-inline file-main-menu">
+						<li><a href="#" class="inactive file-top-menu-upload"><i class="fa fa-upload"></i> Upload</a></li>
+						<li><a href="#" class="inactive file-top-menu menu-download"><i class="fa fa-download"></i> Download</a></li>
+						<li><a href="#" class="inactive file-top-menu menu-delete"><i class="fa fa-close"></i> Delete</a></li>
+						<li><a href="#" class="inactive file-top-menu"><i class="fa fa-eye"></i> View</a></li>
+						<li><a href="#" class="inactive file-top-menu-select select"><i class="fa fa-square-o selectIcon"></i> Select</a></li>
+					</ul>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-2 col-md-4">
-					<div class="well tree-wrapper" style="margin-top: -18px;">
-						<div id="tree-file-manager"></div>
+					<div class="well" style="margin-top: -7px;">
+						<div id="tree-file-manager" class="king-tree" style="overflow: hidden;"></div>
 					</div>
 				</div>
 				<div class="col-lg-10 col-md-8" style="margin-top: -20px;">
-					<div class="knowledge">
-						<h3>
-							<a href="#">
-								<i class="fa fa-folder"></i> <span class="nodeName">Home</span>
-								<span class="pull-right">
-									<span class="nodeFileCount">0</span>개 / <span class="nodeFileSize">0GB</span>
-								</span>
-							</a>
-						</h3>
-					</div>
 					<table id="datatable-file-manager" class="table table-sorting table-dark-header">
 						<thead>
 						<tr>
@@ -326,10 +335,20 @@
                         'core' : {
                             'data' : JSON.parse(result),
                             "check_callback" : true,
-                            "multiple" : false
+                            "multiple" : false,
+							"themes" : {
+                                "name": "proton",
+                                "dots" : true,
+                                "icons": true,
+                                "url"  : true,
+                                "dir"  : "${contextRoot}/assets/js/plugins/tree/themes/"
+							}
                         },
                         'plugins' : ["types", "contextmenu"],
                         'types' : {
+                            'root' : {
+                                'icon' : 'fa fa-desktop text-primary'
+                            },
                             'default' : {
                                 'icon' : 'fa fa-folder'
                             },
