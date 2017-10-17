@@ -40,7 +40,169 @@
 						<div id="tree-file-manager" class="king-tree" style="overflow: hidden;"></div>
 					</div>
 				</div>
-				<div class="col-lg-10 col-md-8" style="margin-top: -20px;">
+				<div class="col-lg-10 col-md-8">
+					<div class="well" style="margin-top: -7px;">
+						<div class="row list-group king-gallery">
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="list-group-image" src="${contextRoot}/assets/img/gallery/bird.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/jet-sky.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/cuba-cup.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/fence.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/kitsune.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/lighthouse.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/desk.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/mac.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/chair.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/cafe.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/desk2.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item col-md-3 col-sm-6">
+								<div class="thumbnail">
+									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/hand.jpg" alt="" />
+									<div class="caption">
+										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
+										<div class="action-buttons">
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%--<div class="col-lg-10 col-md-8" style="margin-top: -20px;">
 					<table id="datatable-file-manager" class="table table-sorting table-dark-header">
 						<thead>
 						<tr>
@@ -59,7 +221,7 @@
 							<li><a tabindex="-1" href="#"><i class="fa fa-eye"></i> View</a></li>
 						</ul>
 					</div>
-				</div>
+				</div>--%>
 			</div>
 		</div>
 		<!-- END FILE MANAGER -->
@@ -426,6 +588,7 @@
             });
 
             $('#datatable-file-manager tbody').on( 'mousedown', 'tr', function (e) {
+                console.log(e.button);
                 // if right click
                 if(e.button == 2) {
                     document.oncontextmenu = function() {return false;};
