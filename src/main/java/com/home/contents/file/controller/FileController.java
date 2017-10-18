@@ -23,9 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/file")
@@ -61,8 +59,19 @@ public class FileController {
 			list.add(fileService.formattingFileSize(file.getFileSize()));
 			fileList.add(list);
 		}
-
 		return fileList;
+	}
+
+	@RequestMapping(value = "/selectFilePath")
+	public @ResponseBody List<String> selectFilePath(String nodeId){
+		log.debug("[FileController] selectFilePath()");
+		List<FileEntity> fileEntityList = fileService.selectFile(nodeId,nodeId.equals("del") ? "T" : "F");
+		List<String> filePathList = new ArrayList<>();
+
+		for(FileEntity file : fileEntityList) {
+			filePathList.add(file.getFileName()+","+file.getFilePath()+","+file.getFileThumbPath());
+		}
+		return filePathList;
 	}
 
 	@RequestMapping(value = "/uploadFile")
@@ -87,10 +96,11 @@ public class FileController {
 	}
 
 	@RequestMapping(value = "/deleteFile")
-	public @ResponseBody String deleteFile(@RequestParam(value="fileNameList[]") String[] fileNameArray, String nodeId){
+	public @ResponseBody List<FileEntity> deleteFile(@RequestParam(value="fileNameList[]") String[] fileNameArray, String nodeId){
 		log.debug("[FileController] deleteFile()");
 		fileService.deleteSelectFile(fileNameArray, nodeId);
-		return nodeId;
+		List<FileEntity> fileEntityList = fileService.selectFile(nodeId,nodeId.equals("del") ? "T" : "F");
+		return fileEntityList;
 	}
 
 	@RequestMapping(value = "/downloadFile")

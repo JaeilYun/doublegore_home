@@ -13,7 +13,8 @@ def versions = [
         jackson: '2.9.1',
         commonsFileupload: '1.3.1',
         commonsIo: '2.5',
-        ant: '1.10.1'
+        ant: '1.10.1',
+        thumbnail: '0.4.8'
 ]
 
 group 'home'
@@ -78,4 +79,7 @@ dependencies {
 
     //Zip
     compile "org.apache.ant:ant:${versions.ant}"
+
+    //Thumbnail
+    compile "net.coobird:thumbnailator:${versions.thumbnail}"
 }

@@ -26,6 +26,9 @@ public class FileEntity implements Serializable {
     @Column(name = "file_path")
     private String filePath;
 
+    @Column(name = "file_thumb_path")
+    private String fileThumbPath;
+
     @Column(name = "file_full_path")
     private String fileFullPath;
 

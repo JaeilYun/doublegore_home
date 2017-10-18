@@ -72,7 +72,8 @@ public class FileService {
         Date date = new Date();
         FileEntity fileEntity = new FileEntity();
         fileEntity.setFileName(file.getOriginalFilename());
-        fileEntity.setFilePath(environment.getRequiredProperty("file.path")+saveFilePath);
+        fileEntity.setFilePath("/files"+saveFilePath);
+        fileEntity.setFileThumbPath(FileUtils.calcThumbnailPath(genId, nodeId, file.getOriginalFilename()));
         fileEntity.setFileFullPath(uploadPath+saveFilePath);
         fileEntity.setFileSize(file.getSize());
         fileEntity.setFileType(fileType);

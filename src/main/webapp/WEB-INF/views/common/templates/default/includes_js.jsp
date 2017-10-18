@@ -29,6 +29,11 @@
 <script src="${contextRoot}/assets/js/king-elements.js"></script>
 <script src="${contextRoot}/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
+<script src="${contextRoot}/assets/js/plugins/light-gallery/js/picturefill.min.js"></script>
+<script src="${contextRoot}/assets/js/plugins/light-gallery/js/lightgallery-all.min.js"></script>
+<script src="${contextRoot}/assets/js/plugins/light-gallery/js/jquery.mousewheel.min.js"></script>
+
+
 <%--Page--%>
 <script src="${contextRoot}/assets/js/jquery-ui/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="${contextRoot}/assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>

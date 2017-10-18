@@ -1,5 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8" session="true" %>
-
+<style type="text/css">
+	.demo-gallery > ul > li a:hover .demo-gallery-poster > img {
+		opacity: 1;
+	}
+	.demo-gallery > ul > li a {
+		border: 3px solid #FFF;
+		border-radius: 3px;
+		display: block;
+		overflow: hidden;
+		position: relative;
+		float: left;
+	}
+	.demo-gallery > ul > li a .demo-gallery-poster {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		-webkit-transition: background-color 0.15s ease 0s;
+		-o-transition: background-color 0.15s ease 0s;
+		transition: background-color 0.15s ease 0s;
+	}
+	.demo-gallery > ul > li a .demo-gallery-poster > img {
+		left: 50%;
+		margin-left: -10px;
+		margin-top: -10px;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		-webkit-transition: opacity 0.3s ease 0s;
+		-o-transition: opacity 0.3s ease 0s;
+		transition: opacity 0.3s ease 0s;
+	}
+	.demo-gallery > ul > li a:hover .demo-gallery-poster {
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+</style>
 <div class="content">
 	<div class="main-header">
 		<h2>File Manager</h2>
@@ -8,201 +44,55 @@
 	<div class="main-content">
 		<!-- FILE MANAGER -->
 		<div class="file-manager">
-			<div class="row" style="margin-bottom: 10px;">
-				<div class="col-lg-2" style="padding-left: 25px;">
-					<h3 style="margin-top: -2px;">
-						<span class="nodeName" style="display: inline-block; width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Home</span>
-					</h3>
-					<div class="top-content pull-left">
-						<ul class="list-inline mini-stat">
-							<li class="pull-left" style="margin-bottom: 5px;">
-								<h5>Counts <span class="stat-value stat-color-orange nodeFileCount" style="text-align: right;"> 0</span></h5>
-							</li>
-							<li class="pull-left">
-								<h5 style="text-align: right;">Size <span class="stat-value stat-color-blue nodeFileSize"> 0MB</span></h5>
-							</li>
-						</ul>
+			<div class="row">
+				<div style="width: 17%;float: left;padding-left: 15px;padding-right: 15px;">
+					<div class="well">
+						<div class="top-content" style="margin-bottom: -10px;">
+							<ul class="list-inline mini-stat">
+								<li class="pull-left" style="margin-bottom: 5px;">
+									<h5>Counts <span class="stat-value stat-color-orange nodeFileCount" style="text-align: right;"> 0</span></h5>
+								</li>
+								<li class="pull-left">
+									<h5 style="text-align: right;">Size <span class="stat-value stat-color-blue nodeFileSize"> 0MB</span></h5>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<div class="col-lg-10" style="margin-top: 15px;">
-					<ul class="list-inline file-main-menu">
-						<li><a href="#" class="inactive file-top-menu-upload"><i class="fa fa-upload"></i> Upload</a></li>
-						<li><a href="#" class="inactive file-top-menu menu-download"><i class="fa fa-download"></i> Download</a></li>
-						<li><a href="#" class="inactive file-top-menu menu-delete"><i class="fa fa-close"></i> Delete</a></li>
-						<li><a href="#" class="inactive file-top-menu"><i class="fa fa-eye"></i> View</a></li>
-						<li><a href="#" class="inactive file-top-menu-select select"><i class="fa fa-square-o selectIcon"></i> Select</a></li>
-					</ul>
+				<div style="width: 83%;float: left;padding-left: 15px;padding-right: 15px;">
+					<div class="col-md-10" style="padding: 19px;">
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-upload" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+							<i class="fa fa-upload"> Upload</i>
+						</button>
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-download" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+							<i class="fa fa-download"> Download</i>
+						</button>
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-delete" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+							<i class="fa fa-close"> Delete</i>
+						</button>
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-select select" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+							<i class="fa fa-square-o selectIcon"> Select</i>
+						</button>
+					</div>
+					<div class="col-md-2 pull-right" style="padding: 19px;text-align: right;">
+						<button type="button" class="btn btn-default list-view-button"
+								style="margin: -3px 0px -3px -3px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; color: #fff; background-color: #626262; border-color: #555555;">
+							<i class="fa fa-list"></i>
+						</button>
+						<button type="button" class="btn btn-default image-view-button"
+								style="margin: -3px 7px -3px -3px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; color: #333; background-color: #e6e6e6; border-color: #adadad;">
+							<i class="fa fa-th"></i>
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-2 col-md-4">
+				<div style="width: 17%;float: left;padding-left: 15px;padding-right: 15px;">
 					<div class="well" style="margin-top: -7px;">
 						<div id="tree-file-manager" class="king-tree" style="overflow: hidden;"></div>
 					</div>
 				</div>
-				<div class="col-lg-10 col-md-8">
-					<div class="well" style="margin-top: -7px;">
-						<div class="row list-group king-gallery">
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="list-group-image" src="${contextRoot}/assets/img/gallery/bird.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/jet-sky.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/cuba-cup.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/fence.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/kitsune.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/lighthouse.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/desk.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/mac.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/chair.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/cafe.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/desk2.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item col-md-3 col-sm-6">
-								<div class="thumbnail">
-									<img class="group list-group-image" src="${contextRoot}/assets/img/gallery/hand.jpg" alt="" />
-									<div class="caption">
-										<h3 class="inner list-group-item-heading">Image Title<span class="pull-right">139 KB</span></h3>
-										<div class="action-buttons">
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<%--<div class="col-lg-10 col-md-8" style="margin-top: -20px;">
+				<div class="file-list-view" style="width: 83%;float: left;padding-left: 15px;padding-right: 15px;margin-top: -20px; display: block">
 					<table id="datatable-file-manager" class="table table-sorting table-dark-header">
 						<thead>
 						<tr>
@@ -221,7 +111,13 @@
 							<li><a tabindex="-1" href="#"><i class="fa fa-eye"></i> View</a></li>
 						</ul>
 					</div>
-				</div>--%>
+				</div>
+				<div class="file-image-view" style="width: 83%; float: left; padding-left: 15px; padding-right: 15px; display: none;">
+					<div class="well demo-gallery" style="margin-top: -7px;">
+						<ul id="lightgallery" class="list-unstyled row">
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- END FILE MANAGER -->
@@ -276,6 +172,8 @@
     $(document).ready(function(){
         var uploaderArray = new Array();
         var selectedNode = "";
+        var fileListImageStatus = true;
+        $("#lightgallery").lightGallery();
         $("#fileuploadButton").on("change", function(){
             uploaderArray = new Array();
             $(".fileUploadBody").empty();
@@ -411,6 +309,8 @@
                     result.push(JSON.parse(this.responseText));
                     fileTable.rows.add(result).draw();
 
+                    $("#lightgallery").data('lightGallery').destroy(true);
+                    $("#lightgallery").lightGallery();
                     setFileAdded();
                 } else {
                     progressBarDiv.setAttribute("class","dynamic-progress-bar progress-bar progress-bar-danger progress-bar-striped active");
@@ -508,59 +408,33 @@
                         },
                         'plugins' : ["types", "contextmenu"],
                         'types' : {
-                            'root' : {
-                                'icon' : 'fa fa-desktop text-primary'
-                            },
                             'default' : {
                                 'icon' : 'fa fa-folder'
-                            },
-                            'txt' : {
-                                'icon' : 'fa fa-file-text-o'
-                            },
-                            'pdf' : {
-                                'icon' : 'fa fa-file-pdf-o'
-                            },
-                            'doc' : {
-                                'icon' : 'fa fa-file-word-o'
-                            },
-                            'docx' : {
-                                'icon' : 'fa fa-file-word-o'
-                            },
-                            'xls' : {
-                                'icon' : 'fa fa-file-excel-o'
-                            },
-                            'xlsx' : {
-                                'icon' : 'fa fa-file-excel-o'
-                            },
-                            'ppt' : {
-                                'icon' : 'fa fa-file-powerpoint-o'
-                            },
-                            'pptx' : {
-                                'icon' : 'fa fa-file-powerpoint-o'
-                            },
-                            'img' : {
-                                'icon' : 'fa fa-file-image-o'
-                            },
-                            'zip' : {
-                                'icon' : 'fa fa-file-zip-o'
                             }
                         }
 
                     }).on('select_node.jstree', function(e, data) {
                         var node = data.instance.get_node(data.selected);
                         unCheckSelectAll();
-                        $(".nodeName").text(node.text);
+                        //$(".nodeName").text(node.text);
                         // since multiple selection is disabled, it's ok not to iterate array (data.selected)
                         if(data.selected == 'root') {
                             fileTable.clear().draw();
-                            $(".file-top-menu").addClass("inactive");
-                            $(".file-top-menu-upload").addClass("inactive");
-							$(".file-top-menu-select").addClass("inactive");
+                            $(".file-top-menu").attr("disabled","disabled");
+                            $(".file-top-menu-upload").attr("disabled","disabled");
+							$(".file-top-menu-select").attr("disabled","disabled");
+                            $(".king-gallery").empty();
                             setFileAdded();
                         } else {
-                            $(".file-top-menu-upload").removeClass("inactive");
-                            $(".file-top-menu-select").removeClass("inactive");
-                            $(".file-top-menu").addClass("inactive");
+                            selectedNode = data.selected.toString();
+                            if(fileListImageStatus){
+                                $(".file-top-menu-upload").removeAttr("disabled");
+                                $(".file-top-menu-select").removeAttr("disabled");
+                                $(".file-top-menu").attr("disabled","disabled");
+
+							} else {
+                                fileViewButton();
+							}
                             $.ajax({
                                 url: '/file/selectFile',
                                 data: {
@@ -588,13 +462,12 @@
             });
 
             $('#datatable-file-manager tbody').on( 'mousedown', 'tr', function (e) {
-                console.log(e.button);
                 // if right click
                 if(e.button == 2) {
                     document.oncontextmenu = function() {return false;};
 
                     if(fileTable.rows().data().length > 0) {
-                        $(".file-top-menu").removeClass("inactive");
+                        $(".file-top-menu").removeAttr("disabled");
                     }
                     //만약 선택이 안되어있다면 선택
                     if(!$(this).hasClass('DTTT_selected')) {
@@ -658,6 +531,7 @@
                 success: function (result) {
                     fileTable.rows(rows).remove().draw();
                     dataTableCountCheck();
+                    setFileAdded();
                 }
             });
 		}
@@ -705,7 +579,7 @@
 
         $(".file-top-menu-upload").on("click", function(e){
             e.preventDefault();
-            if(!$(this).hasClass("inactive")){
+            if(!$(this)[0].hasAttribute("disabled")){
                 $("#fileuploadButton").click();
 			}
 		});
@@ -771,10 +645,76 @@
         }
         dataTableCountCheck = function(){
             if(fileTable.rows(".DTTT_selected").data().length > 0) {
-                $(".file-top-menu").removeClass("inactive");
+                $(".file-top-menu").removeAttr("disabled");
             } else {
-                $(".file-top-menu").addClass("inactive");
+                $(".file-top-menu").attr("disabled","disabled");
             }
 		}
+
+		$(".image-view-button").on('click', function(){
+            fileListImageStatus = false;
+			$(".image-view-button").css("color","#fff");
+            $(".image-view-button").css("background-color","#626262");
+            $(".image-view-button").css("border-color","#555555");
+
+            $(".list-view-button").css("color","#333");
+            $(".list-view-button").css("background-color","#e6e6e6");
+            $(".list-view-button").css("border-color","#adadad");
+
+            $(".file-image-view").css("display","block");
+            $(".file-list-view").css("display","none");
+            $(".file-list-image-toggle").attr("disabled","disabled");
+            fileViewButton();
+		});
+
+        $(".list-view-button").on('click', function(){
+            fileListImageStatus = true;
+            $(".list-view-button").css("color","#fff");
+            $(".list-view-button").css("background-color","#626262");
+            $(".list-view-button").css("border-color","#555555");
+
+            $(".image-view-button").css("color","#333");
+            $(".image-view-button").css("background-color","#e6e6e6");
+            $(".image-view-button").css("border-color","#adadad");
+
+            $(".file-list-view").css("display","block");
+            $(".file-image-view").css("display","none");
+            if(selectedNode != 'root' && selectedNode != "") {
+                dataTableUnSelectAll();
+                $(".file-top-menu-upload").removeAttr("disabled");
+                $(".file-top-menu-select").removeAttr("disabled");
+			}
+        });
+
+        fileViewButton = function(){
+            $("#lightgallery").empty();
+            $.ajax({
+                url: '/file/selectFilePath',
+                data: {
+                    "nodeId": selectedNode
+                },
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                success: function (result) {
+                    var str = "";
+                    for(var i = 0; i < result.length; i++) {
+                        str += '<li class="col-xs-6 col-sm-4 col-md-3"\n' +
+                            'data-src="${contextRoot}'+result[i].split(",")[1]+'" data-sub-html="<h4>'+result[i].split(",")[0]+'</h4>" style="margin-top:15px;">';
+                        str += '<a href="">';
+                        str += '<img class="img-responsive" style="width:348px;" src="${contextRoot}'+result[i].split(",")[2]+'">';
+                        str += '<div class="demo-gallery-poster">';
+                        str += '<img src="${contextRoot}/assets/js/plugins/light-gallery/img/zoom.png">';
+                        str += '</div></a></li>';
+                    }
+                    $("#lightgallery").append(str);
+                    $("#lightgallery").data('lightGallery').destroy(true);
+                    $("#lightgallery").lightGallery({
+                        actualSize: false,
+						speed: 300,
+						share: false
+					});
+                }
+            });
+        }
     });
 </script>

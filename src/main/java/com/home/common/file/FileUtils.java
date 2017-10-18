@@ -1,6 +1,7 @@
 package com.home.common.file;
 
 import com.home.contents.file.entity.FileEntity;
+import net.coobird.thumbnailator.Thumbnails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -23,17 +24,29 @@ public class FileUtils {
 
         String originalfileName = "";
         String saveFileName = "";
+        String saveThumbFileName = "";
         String savePath = "";
+        String saveThumbPath = "";
 
         originalfileName = multipartFile.getOriginalFilename();
         String fileExtension = getExtension(originalfileName);
         saveFileName = genId + "." + fileExtension;
+        saveThumbFileName = genId + "_thumb." + fileExtension;
 
         savePath = makeDir(uploadPath, nodeId);
+        saveThumbPath = makeDir(uploadPath, nodeId + File.separatorChar + "thumbnail");
 
         File target = new File(uploadPath + savePath, saveFileName);
+        File thumbnailTarget = new File(uploadPath + saveThumbPath, saveThumbFileName);
 
         FileCopyUtils.copy(multipartFile.getBytes(), target);
+        if(fileExtension.equals("jpg") || fileExtension.equals("jpeg") || fileExtension.equals("png") ||
+                fileExtension.equals("gif") || fileExtension.equals("bmp")){
+            if (target.exists()) {
+                thumbnailTarget.getParentFile().mkdirs();
+                Thumbnails.of(target).size(190, 150).toFile(thumbnailTarget);
+            }
+        }
 
         return makeFilePath(uploadPath, savePath, saveFileName);
     }
@@ -75,7 +88,7 @@ public class FileUtils {
         }
     }
 
-    private static String makeDir(String uploadPath, String nodeId) {
+    public static String makeDir(String uploadPath, String nodeId) {
         File dirPath = new File(uploadPath + File.separatorChar + nodeId);
         if (!dirPath.exists()) {
             dirPath.mkdir();
@@ -83,8 +96,14 @@ public class FileUtils {
         return File.separatorChar + nodeId;
     }
 
-    private static String makeFilePath(String uploadPath, String path, String fileName) throws IOException {
+    public static String makeFilePath(String uploadPath, String path, String fileName) throws IOException {
         String filePath = uploadPath + path + "/" + fileName;
         return filePath.substring(uploadPath.length()).replace(File.separatorChar, '/');
+    }
+
+    public static String calcThumbnailPath(String genId, String nodeId, String fileName) {
+        String thumbnailPrePath = "/files/"+nodeId+"/thumbnail/"+genId+"_thumb."+getExtension(fileName);
+        return thumbnailPrePath;
+
     }
 }
