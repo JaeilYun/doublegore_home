@@ -114,7 +114,7 @@
 				</div>
 				<div class="file-image-view" style="width: 83%; float: left; padding-left: 15px; padding-right: 15px; display: none;">
 					<div class="well demo-gallery" style="margin-top: -7px;">
-						<ul id="lightgallery" class="list-unstyled row">
+						<ul id="lightgallery" class="list-unstyled row" style="margin-top: -15px;">
 						</ul>
 					</div>
 				</div>
@@ -131,7 +131,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				<h4 class="modal-title" id="myModalLabel">File Upload (<span class="completeCnt">0</span> / <span class="totalCnt">0</span>)</h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">
@@ -185,6 +185,7 @@
 				var uploader = new Uploader(file);
 				uploaderArray.push(uploader);
             }
+			$(".totalCnt").text(uploadFiles.files.length);
 		});
 
         $("#uploadModal").blur(function(){
@@ -192,6 +193,9 @@
 		});
 
         $(".uploadStart").on("click", function(){
+            $(".uploadStart").prop("disabled",true);
+            $(".uploadStart-icon").removeClass("fa-floppy-o");
+            $(".uploadStart-icon").addClass("fa-spinner fa-spin");
             for(var i = 0; i < uploaderArray.length; i++) {
                 uploaderArray[i].startUpload();
 			}
@@ -295,9 +299,6 @@
                     var percentComplete = Math.ceil(evt.loaded / evt.total * 100);
                     progressBarDiv.setAttribute("style","width: "+percentComplete+"%");
                     progressBarDiv.textContent = percentComplete+"%";
-                    $(".uploadStart").prop("disabled",true);
-                    $(".uploadStart-icon").removeClass("fa-floppy-o");
-                    $(".uploadStart-icon").addClass("fa-spinner fa-spin");
                 }
             }
 
@@ -308,6 +309,8 @@
                     var result = new Array();
                     result.push(JSON.parse(this.responseText));
                     fileTable.rows.add(result).draw();
+                    var completeCnt = Number($(".completeCnt").text())+1;
+                    $(".completeCnt").text(completeCnt);
 
                     $("#lightgallery").data('lightGallery').destroy(true);
                     $("#lightgallery").lightGallery();
@@ -316,19 +319,16 @@
                     progressBarDiv.setAttribute("class","dynamic-progress-bar progress-bar progress-bar-danger progress-bar-striped active");
                     progressBarDiv.textContent = "Fail";
                 }
-                $(".uploadStart").prop("disabled",false);
-                $(".uploadStart-icon").addClass("fa-floppy-o");
-                $(".uploadStart-icon").removeClass("fa-spinner fa-spin");
+                if($(".completeCnt").text() == $(".totalCnt").text()) {
+                    $(".uploadStart").css("display","none");
+				}
             }
 
             function transferFailed(evt) {
                 progressBarDiv.setAttribute("class","dynamic-progress-bar progress-bar progress-bar-danger progress-bar-striped active");
                 progressBarDiv.textContent = "Fail";
                 console.log("An error occurred while transferring the file.");
-
-                $(".uploadStart").prop("disabled",false);
-                $(".uploadStart-icon").addClass("fa-floppy-o");
-                $(".uploadStart-icon").removeClass("fa-spinner fa-spin");
+                $(".uploadStart").css("display","none");
             }
         }
 
@@ -416,15 +416,14 @@
                     }).on('select_node.jstree', function(e, data) {
                         var node = data.instance.get_node(data.selected);
                         unCheckSelectAll();
-                        //$(".nodeName").text(node.text);
                         // since multiple selection is disabled, it's ok not to iterate array (data.selected)
                         if(data.selected == 'root') {
                             fileTable.clear().draw();
                             $(".file-top-menu").attr("disabled","disabled");
                             $(".file-top-menu-upload").attr("disabled","disabled");
 							$(".file-top-menu-select").attr("disabled","disabled");
-                            $(".king-gallery").empty();
                             setFileAdded();
+                            $("#lightgallery").empty();
                         } else {
                             selectedNode = data.selected.toString();
                             if(fileListImageStatus){
@@ -698,10 +697,9 @@
                 success: function (result) {
                     var str = "";
                     for(var i = 0; i < result.length; i++) {
-                        str += '<li class="col-xs-6 col-sm-4 col-md-3"\n' +
-                            'data-src="${contextRoot}'+result[i].split(",")[1]+'" data-sub-html="<h4>'+result[i].split(",")[0]+'</h4>" style="margin-top:15px;">';
+                        str += '<li data-src="${contextRoot}'+result[i].split(",")[1]+'" data-sub-html="<h4>'+result[i].split(",")[0]+'</h4>">';
                         str += '<a href="">';
-                        str += '<img class="img-responsive" style="width:348px;" src="${contextRoot}'+result[i].split(",")[2]+'">';
+                        str += '<img class="img-responsive" src="${contextRoot}'+result[i].split(",")[2]+'" style="height:160px;">';
                         str += '<div class="demo-gallery-poster">';
                         str += '<img src="${contextRoot}/assets/js/plugins/light-gallery/img/zoom.png">';
                         str += '</div></a></li>';
@@ -709,9 +707,11 @@
                     $("#lightgallery").append(str);
                     $("#lightgallery").data('lightGallery').destroy(true);
                     $("#lightgallery").lightGallery({
+						mode: 'lg-slide-skew-rev',
                         actualSize: false,
 						speed: 300,
-						share: false
+						share: false,
+                        pause: 2000
 					});
                 }
             });

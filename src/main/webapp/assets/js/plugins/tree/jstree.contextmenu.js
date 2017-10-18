@@ -123,7 +123,7 @@
 					"action"			: function (data) {
 						var inst = $.jstree.reference(data.reference),
 							obj = inst.get_node(data.reference);
-						inst.edit(obj, "New_node", function(rename_node){
+						inst.edit(obj, obj.text, function(rename_node){
                             var renameNode = new Object();
                             renameNode.id = rename_node.id;
                             renameNode.text = rename_node.text;
