@@ -28,9 +28,6 @@
 	<definition name="calendar/*" extends="default">
 		<put-attribute name="body" value="/WEB-INF/views/calendar/{1}.jsp"/>
 	</definition>
-	<definition name="gallery/*" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/gallery/{1}.jsp"/>
-	</definition>
 	<definition name="note/*" extends="default">
 		<put-attribute name="body" value="/WEB-INF/views/note/{1}.jsp"/>
 	</definition>

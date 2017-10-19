@@ -10,7 +10,6 @@
 				<li class="${sessionScope.currentMenu == 'EMAIL' ? 'active' : '' }"><a href="${contextRoot}/email/main"><i class="fa fa-envelope"></i><span class="text">e-Mail </span></a></li>
 				<li class="${sessionScope.currentMenu == 'FILE' ? 'active' : '' }"><a href="${contextRoot}/file/main"><i class="fa fa-folder-open"></i><span class="text">File Manager </span></a></li>
 				<li class="${sessionScope.currentMenu == 'CALENDAR' ? 'active' : '' }"><a href="${contextRoot}/calendar/main"><i class="fa fa-calendar"></i><span class="text">Calendar </span></a></li>
-				<li class="${sessionScope.currentMenu == 'GALLERY' ? 'active' : '' }"><a href="${contextRoot}/gallery/main"><i class="fa fa-photo"></i><span class="text">Gallery </span></a></li>
 				<li class="${sessionScope.currentMenu == 'NOTE' ? 'active' : '' }"><a href="${contextRoot}/note/main"><i class="fa fa-pencil"></i><span class="text">Note </span></a></li>
 			</ul>
 		</nav>

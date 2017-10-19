@@ -45,4 +45,5 @@
 <script src="${contextRoot}/assets/js/plugins/markdown/markdown.js"></script>
 <script src="${contextRoot}/assets/js/plugins/markdown/to-markdown.js"></script>
 <script src="${contextRoot}/assets/js/plugins/markdown/bootstrap-markdown.js"></script>
+<script src="${contextRoot}/assets/js/plugins/summernote/summernote-ko-KR.js"></script>
 

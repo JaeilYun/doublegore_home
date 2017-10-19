@@ -21,7 +21,16 @@ public class NoteController {
 		log.debug("[NoteController] main()");
 		
 		ModelAndView mav = new ModelAndView("note/noteMain");
-		
+		return mav;
+	}
+
+	@Menu(type = MenuTypes.NOTE)
+	@Breadcrumb(values = { "note.main" })
+	@RequestMapping(value = "/register")
+	public ModelAndView register() {
+		log.debug("[NoteController] register()");
+
+		ModelAndView mav = new ModelAndView("note/noteRegister");
 		return mav;
 	}
 }
