@@ -1,40 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8" session="true" %>
 <style type="text/css">
-	.demo-gallery > ul > li a:hover .demo-gallery-poster > img {
-		opacity: 1;
-	}
-	.demo-gallery > ul > li a {
-		border: 3px solid #FFF;
-		border-radius: 3px;
-		display: block;
-		overflow: hidden;
-		position: relative;
-		float: left;
-	}
-	.demo-gallery > ul > li a .demo-gallery-poster {
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		-webkit-transition: background-color 0.15s ease 0s;
-		-o-transition: background-color 0.15s ease 0s;
-		transition: background-color 0.15s ease 0s;
-	}
-	.demo-gallery > ul > li a .demo-gallery-poster > img {
-		left: 50%;
-		margin-left: -10px;
-		margin-top: -10px;
-		opacity: 0;
-		position: absolute;
-		top: 50%;
-		-webkit-transition: opacity 0.3s ease 0s;
-		-o-transition: opacity 0.3s ease 0s;
-		transition: opacity 0.3s ease 0s;
-	}
-	.demo-gallery > ul > li a:hover .demo-gallery-poster {
-		background-color: rgba(0, 0, 0, 0.3);
-	}
+
 </style>
 <div class="content">
 	<div class="main-header">
@@ -45,7 +11,7 @@
 		<!-- FILE MANAGER -->
 		<div class="file-manager">
 			<div class="row">
-				<div style="width: 17%;float: left;padding-left: 15px;padding-right: 15px;">
+				<div class="fileManager-left-contents">
 					<div class="well">
 						<div class="top-content" style="margin-bottom: -10px;">
 							<ul class="list-inline mini-stat">
@@ -59,18 +25,19 @@
 						</div>
 					</div>
 				</div>
-				<div style="width: 83%;float: left;padding-left: 15px;padding-right: 15px;">
+				<div class="fileManager-right-contents">
 					<div class="col-md-10" style="padding: 19px;">
-						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-upload" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-upload fileManage-top-button" disabled="disabled">
 							<i class="fa fa-upload"> Upload</i>
 						</button>
-						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-download" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-download fileManage-top-button" disabled="disabled">
 							<i class="fa fa-download"> Download</i>
 						</button>
-						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-delete" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu menu-delete fileManage-top-button" disabled="disabled"
+								data-toggle="modal" data-target="#deleteModal">
 							<i class="fa fa-close"> Delete</i>
 						</button>
-						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-select select" style="margin: -3px 7px -3px -3px;border-radius: 4px;" disabled="disabled">
+						<button type="button" class="btn btn-default file-list-image-toggle file-top-menu-select select fileManage-top-button" disabled="disabled">
 							<i class="fa fa-square-o selectIcon"> Select</i>
 						</button>
 					</div>
@@ -87,12 +54,15 @@
 				</div>
 			</div>
 			<div class="row">
-				<div style="width: 17%;float: left;padding-left: 15px;padding-right: 15px;">
+				<div class="fileManager-left-contents">
 					<div class="well" style="margin-top: -7px;">
 						<div id="tree-file-manager" class="king-tree" style="overflow: hidden;"></div>
 					</div>
+					<div class="well prev-image" style="margin-top: -7px; padding: 7px; display: none;">
+						<img class="prev-image-view" src="" style="width: 100%">
+					</div>
 				</div>
-				<div class="file-list-view" style="width: 83%;float: left;padding-left: 15px;padding-right: 15px;margin-top: -20px; display: block">
+				<div class="file-list-view fileManager-right-contents" style="margin-top: -20px; display: block">
 					<table id="datatable-file-manager" class="table table-sorting table-dark-header">
 						<thead>
 						<tr>
@@ -112,9 +82,9 @@
 						</ul>
 					</div>
 				</div>
-				<div class="file-image-view" style="width: 83%; float: left; padding-left: 15px; padding-right: 15px; display: none;">
+				<div class="file-image-view fileManager-right-contents" style="display: none;">
 					<div class="well demo-gallery" style="margin-top: -7px;">
-						<ul id="lightgallery" class="list-unstyled row" style="margin-top: -15px;">
+						<ul id="lightgallery" class="list-unstyled row" style="margin-top: -15px;margin-bottom: -15px;">
 						</ul>
 					</div>
 				</div>
@@ -152,8 +122,23 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success uploadStart"><i class="fa fa-floppy-o uploadStart-icon"></i> 전송</button>
+				<button type="button" class="btn btn-success uploadStart"><i class="fa fa-floppy-o uploadStart-icon"></i> <span class="uploadButtonLabel">전송</span></button>
 				<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> 닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myDeleteModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myDeleteModalLabel">정말로 삭제하시겠습니까?</h4>
+			</div>
+			<div style="padding: 15px; text-align: right;">
+				<button type="button" class="btn btn-danger delete-confirm-btn"><i class="fa fa-trash"></i> 삭제</button>
+				<button type="button" class="btn btn-default delete-modal-btn" data-dismiss="modal"><i class="fa fa-times-circle"></i> 닫기</button>
 			</div>
 		</div>
 	</div>
@@ -320,7 +305,9 @@
                     progressBarDiv.textContent = "Fail";
                 }
                 if($(".completeCnt").text() == $(".totalCnt").text()) {
-                    $(".uploadStart").css("display","none");
+                    $(".uploadStart-icon").addClass("fa-floppy-o");
+                    $(".uploadStart-icon").removeClass("fa-spinner fa-spin");
+					$(".uploadButtonLabel").text("완료");
 				}
             }
 
@@ -416,6 +403,7 @@
                     }).on('select_node.jstree', function(e, data) {
                         var node = data.instance.get_node(data.selected);
                         unCheckSelectAll();
+                        $(".prev-image").css("display","none");
                         // since multiple selection is disabled, it's ok not to iterate array (data.selected)
                         if(data.selected == 'root') {
                             fileTable.clear().draw();
@@ -457,6 +445,29 @@
             });
 
             $('#datatable-file-manager tbody').on( 'click', 'tr', function (e) {
+                if(fileTable.rows(".DTTT_selected").data().length == 1) {
+                    var fileName = fileTable.rows(".DTTT_selected").data()[0][0].split("&nbsp;")[2];
+                    var fileExtention = getFileExtension(fileName);
+                    if(fileExtention == '.jpg' || fileExtention == '.jpeg' || fileExtention == '.gif'
+						|| fileExtention == '.png' || fileExtention == '.bmp') {
+                        $.ajax({
+                            url: '/file/selectFilePrevView',
+                            data: {
+                                "fileName" : fileName,
+                                "nodeId" : jstree.jstree('get_selected').toString()
+                            },
+                            type: 'POST',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            success: function (result) {
+                                $(".prev-image-view").attr("src",result);
+                                $(".prev-image").css("display","block");
+                            }
+                        });
+					} else {
+                        $(".prev-image-view").attr("src","");
+                        $(".prev-image").css("display","none");
+					}
+                }
                 dataTableCountCheck();
             });
 
@@ -496,8 +507,7 @@
             return _fileName;
         }
 
-        $(".menu-delete").on("click", function(e) {
-            e.preventDefault();
+        $(".delete-confirm-btn").on("click", function(e) {
             deleteFile();
 		});
 
@@ -531,12 +541,12 @@
                     fileTable.rows(rows).remove().draw();
                     dataTableCountCheck();
                     setFileAdded();
+                    $(".delete-modal-btn").click();
                 }
             });
 		}
 
         $(".menu-download").on("click", function(e) {
-            e.preventDefault();
             var fileNameArr = [];
             var rows = $('tr.DTTT_selected');
             var rowData = fileTable.rows(rows).data();
@@ -577,8 +587,13 @@
         });
 
         $(".file-top-menu-upload").on("click", function(e){
-            e.preventDefault();
             if(!$(this)[0].hasAttribute("disabled")){
+                $(".uploadStart").prop("disabled",false);
+                $(".uploadStart-icon").addClass("fa-floppy-o");
+                $(".uploadStart-icon").removeClass("fa-spinner fa-spin");
+                $(".completeCnt").text("0");
+                $(".uploadButtonLabel").text("전송");
+
                 $("#fileuploadButton").click();
 			}
 		});
@@ -698,8 +713,8 @@
                     var str = "";
                     for(var i = 0; i < result.length; i++) {
                         str += '<li data-src="${contextRoot}'+result[i].split(",")[1]+'" data-sub-html="<h4>'+result[i].split(",")[0]+'</h4>">';
-                        str += '<a href="">';
-                        str += '<img class="img-responsive" src="${contextRoot}'+result[i].split(",")[2]+'" style="height:160px;">';
+                        str += '<a href="" style="width:16.6666%">';
+                        str += '<img class="img-responsive" src="${contextRoot}'+result[i].split(",")[2]+'">';
                         str += '<div class="demo-gallery-poster">';
                         str += '<img src="${contextRoot}/assets/js/plugins/light-gallery/img/zoom.png">';
                         str += '</div></a></li>';

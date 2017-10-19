@@ -12,4 +12,5 @@ public interface FileRepository extends JpaRepository<FileEntity, Long> {
     List<FileEntity> findByNodeIdAndFileNameAndIsDeleted(String nodeId, String fileName, String isDeleted);
     FileEntity findTop1ByNodeIdAndFileNameAndIsDeleted(String nodeId, String fileName, String isDeleted);
     List<FileEntity> findByNodeIdAndFileNameInAndIsDeleted(String nodeId, String[] fileName, String isDeleted);
+    List<FileEntity> findByNodeIdAndFileTypeInAndIsDeleted(String nodeId, String[] fileType, String isDeleted);
 }

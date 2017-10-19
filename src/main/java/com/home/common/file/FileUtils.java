@@ -2,6 +2,7 @@ package com.home.common.file;
 
 import com.home.contents.file.entity.FileEntity;
 import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
@@ -44,7 +45,7 @@ public class FileUtils {
                 fileExtension.equals("gif") || fileExtension.equals("bmp")){
             if (target.exists()) {
                 thumbnailTarget.getParentFile().mkdirs();
-                Thumbnails.of(target).size(190, 150).toFile(thumbnailTarget);
+                Thumbnails.of(target).crop(Positions.CENTER).size(200, 200).keepAspectRatio(true).toFile(thumbnailTarget);
             }
         }
 

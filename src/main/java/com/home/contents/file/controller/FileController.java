@@ -62,10 +62,18 @@ public class FileController {
 		return fileList;
 	}
 
+	@RequestMapping(value = "/selectFilePrevView")
+	public @ResponseBody String selectFilePrevView(String nodeId, String fileName){
+		log.debug("[FileController] selectFilePrevView()");
+		FileEntity fileEntity = fileService.selectFile(nodeId, fileName, "F");
+		return fileEntity.getFilePath();
+	}
+
 	@RequestMapping(value = "/selectFilePath")
 	public @ResponseBody List<String> selectFilePath(String nodeId){
 		log.debug("[FileController] selectFilePath()");
-		List<FileEntity> fileEntityList = fileService.selectFile(nodeId,nodeId.equals("del") ? "T" : "F");
+		String[] extentionArr = {"jpg","jpeg","png","gif","bmp"};
+		List<FileEntity> fileEntityList = fileService.selectFilePathList(nodeId, extentionArr, nodeId.equals("del") ? "T" : "F");
 		List<String> filePathList = new ArrayList<>();
 
 		for(FileEntity file : fileEntityList) {

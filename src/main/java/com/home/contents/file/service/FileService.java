@@ -50,6 +50,9 @@ public class FileService {
     public List<FileEntity> selectFileList(String nodeId, String[] fileName, String isDeleted) {
         return fileRepository.findByNodeIdAndFileNameInAndIsDeleted(nodeId, fileName, isDeleted);
     }
+    public List<FileEntity> selectFilePathList(String nodeId, String[] extentionList, String isDeleted) {
+        return fileRepository.findByNodeIdAndFileTypeInAndIsDeleted(nodeId, extentionList, isDeleted);
+    }
 
     public String duplicatedFileCheck(String fileName, String nodeId){
         List<FileEntity> fileList = new ArrayList<>();
@@ -125,8 +128,25 @@ public class FileService {
             case "jar" :
                 icon = "<i class='fa fa-file-zip-o'></i>&nbsp;&nbsp;";
                 break;
+            case "mp3" :
+            case "wav" :
+            case "wma" :
+            case "m4v" :
+                icon = "<i class='fa fa-audio-o'></i>&nbsp;&nbsp;";
+                break;
+            case "avi" :
+            case "mpg" :
+            case "mpeg" :
+            case "asf" :
+            case "wmv" :
+            case "mov" :
+            case "mp4" :
+            case "flv" :
+            case "mkv" :
+                icon = "<i class='fa fa-movie-o'></i>&nbsp;&nbsp;";
+                break;
             default:
-                icon = "<i class='fa fa-folder'></i>&nbsp;&nbsp;";
+                icon = "<i class='fa fa-file-o'></i>&nbsp;&nbsp;";
         }
         return icon;
     }
