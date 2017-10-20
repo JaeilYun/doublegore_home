@@ -14,17 +14,9 @@
 				</div>
 			</div>
 			<div class="widget-content">
-				<ul class="list-unstyled quick-inbox-list">
+				<ul class="list-unstyled quick-inbox-list" style="margin-bottom: -10px;">
 					<li class="unread">
-						<div style="padding: 0 5px 0 5px; margin: -5px 0 -5px 0">
-							<div class="header">
-								<h4 class="title"><a href="#"><span>Weekly Meeting</span><span class="timestamp pull-right">2m ago</span></a></h4>
-							</div>
-							<a href="#" class="brief">Hi Amanda, Quickly myocardinate business functionalities for synergistic systems ...</a>
-						</div>
-					</li>
-					<li class="unread">
-						<div style="padding: 0 5px 0 5px; margin: -5px 0 -5px 0">
+						<div style="padding: 0 5px 0 5px; margin: -8px 0 -10px 0;">
 							<div class="header">
 								<h4 class="title"><a href="#"><span>Password Reset</span><span class="timestamp pull-right">3 hours ago</span></a></h4>
 							</div>
@@ -32,7 +24,15 @@
 						</div>
 					</li>
 					<li class="unread">
-						<div style="padding: 0 5px 0 5px; margin: -5px 0 -5px 0">
+						<div style="padding: 0 5px 0 5px; margin: -8px 0 -10px 0;">
+							<div class="header">
+								<h4 class="title"><a href="#"><span>Password Reset</span><span class="timestamp pull-right">3 hours ago</span></a></h4>
+							</div>
+							<a href="#" class="brief">Hi, Conveniently drive effective methods of empowerment through cross-unit innovation.  ...</a>
+						</div>
+					</li>
+					<li class="unread">
+						<div style="padding: 0 5px 0 5px; margin: -8px 0 -10px 0;">
 							<div class="header">
 								<h4 class="title"><a href="#"><span>Weekly Meeting</span><span class="timestamp pull-right">2m ago</span></a></h4>
 							</div>
@@ -40,7 +40,7 @@
 						</div>
 					</li>
 					<li class="unread">
-						<div style="padding: 0 5px 0 5px; margin: -5px 0 -5px 0">
+						<div style="padding: 0 5px 0 5px; margin: -8px 0 -10px 0;">
 							<div class="header">
 								<h4 class="title"><a href="#"><span>Password Reset</span><span class="timestamp pull-right">3 hours ago</span></a></h4>
 							</div>
@@ -51,6 +51,7 @@
 			</div>
 		</div>
 		<!-- INBOX -->
+		<div class="well">
 		<div class="inbox">
 			<div class="top">
 				<div class="row">
@@ -198,6 +199,7 @@
 			</div>
 		</div>
 		<!-- END INBOX -->
+		</div>
 	</div>
 </div>
 
