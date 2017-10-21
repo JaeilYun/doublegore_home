@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8" session="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="content">
 	<div class="main-header">
@@ -23,20 +24,11 @@
 							<div class="form-group">
 								<label class="col-md-1 control-label">Type</label>
 								<div class="col-md-11">
-									<span class="input-group">
 									<select class="form-control">
-										<option value="cheese">Cheese</option>
-										<option value="tomatoes">Tomatoes</option>
-										<option value="mozarella">Mozzarella</option>
-										<option value="mushrooms">Mushrooms</option>
-										<option value="pepperoni">Pepperoni</option>
-										<option value="onions">Onions</option>
+										<c:forEach var="list" items="${categoryList}">
+											<option value="${list.seq}">${list.type}</option>
+										</c:forEach>
 									</select>
-									<span class="input-group-addon" style="padding: 0px;">
-										<button type="button" class="btn btn-primary btn-sm" style="height: 32px">
-											<i class="fa fa-plus"></i>
-										</button>
-									</span></span>
 								</div>
 							</div>
 						</div>
